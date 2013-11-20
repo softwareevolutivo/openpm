@@ -29,6 +29,10 @@
     <!-- <%= f.text_field :state %> -->
   </div>
   <div class="field">
+    <%= f.label :work_mode %><br>
+    <%= f.select :work_mode, options_for_select( %w(by_hours by_delivery), f.object.work_mode), include_blank: false %>
+  </div>
+  <div class="field">
     <%= f.label :start_date %><br>
     <%= f.date_select :start_date %>
   </div>

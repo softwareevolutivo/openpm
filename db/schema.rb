@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119143711) do
+ActiveRecord::Schema.define(version: 20131120221343) do
 
   create_table "customers", force: true do |t|
     t.string   "nif"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20131119143711) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id",                      null: false
+    t.string   "work_mode"
+    t.decimal  "value"
+    t.decimal  "hour_rate"
   end
 
   add_index "proyects", ["customer_id"], name: "index_proyects_on_customer_id"
