@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :customer, 'Customer' %><br>
-    <%= f.select :customer_id, Customer.all.collect {|c| [ c.name, c ] }, { include_blank: true } %>
+    <%= f.select :customer_id, Customer.all.collect {|c| [ c.name, c.id ] }, {  selected: f.object.customer_id, include_blank: true } %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
