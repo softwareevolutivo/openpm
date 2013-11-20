@@ -1,0 +1,35 @@
+<h1>Listing proyects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>State</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proyects.each do |proyect| %>
+      <tr>
+        <td><%= proyect.name %></td>
+        <td><%= proyect.description %></td>
+        <td><%= proyect.state %></td>
+        <td><%= proyect.start_date %></td>
+        <td><%= proyect.end_date %></td>
+        <td><%= link_to 'Show', proyect %></td>
+        <td><%= link_to 'Edit', edit_proyect_path(proyect) %></td>
+        <td><%= link_to 'Destroy', proyect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proyect', new_proyect_path %>

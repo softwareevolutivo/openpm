@@ -1,0 +1,42 @@
+<%= form_for(@proyect) do |f| %>
+  <% if @proyect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proyect.errors.count, "error") %> prohibited this proyect from being saved:</h2>
+
+      <ul>
+      <% @proyect.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer, 'Customer' %><br>
+    <%= f.select :customer_id, Customer.all.collect {|c| [ c.name, c ] }, { include_blank: true } %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.select :state, options_for_select( %w(proposal contract started finish), f.object.state), include_blank: false %>
+    <!-- <%= f.text_field :state %> -->
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
