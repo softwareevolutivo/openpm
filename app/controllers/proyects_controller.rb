@@ -1,4 +1,5 @@
 class ProyectsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_proyect, only: [:show, :edit, :update, :destroy]
 
   # GET /proyects

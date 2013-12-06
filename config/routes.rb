@@ -1,5 +1,8 @@
 Openpm::Application.routes.draw do
-  devise_for :users
+  get "main/login"
+  get "main/control_panel"
+  get "user/root", to: "main#control_panel"
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :proyects
 
   resources :customers
@@ -9,7 +12,7 @@ Openpm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'customer#index'
+  root 'main#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

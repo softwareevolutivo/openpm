@@ -46,3 +46,4 @@ end
 
 # Security
 gem 'devise'
+gem 'omniauth-google-apps'
