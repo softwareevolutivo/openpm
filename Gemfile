@@ -47,3 +47,4 @@ end
 # Security
 gem 'devise'
 gem 'omniauth-google-apps'
+gem 'foundation-rails'

@@ -1,3 +1,32 @@
-<h1>Main#login</h1>
-<%= link_to 'GMail', user_omniauth_authorize_path(:google_apps) %>
-<p>Find me in app/views/main/login.html.erb</p>
+<% content_for :head do %>
+    <script>
+        var redirected = false;
+        $(document).ready(function() {
+            $('#btnSignIn').click(function () {
+                $(this).attr("href", "#");
+                var lnk = '<%= user_omniauth_authorize_path(:google_apps); %>';
+                //alert(lnk);
+                if (!redirected) {
+                    window.location = lnk;
+                }
+            });
+        });
+    </script>
+<% end %>
+
+<header>
+  <h1>Welcome to OpenPM, the proyect financial point of view.</h1>
+</header>
+<section id="main">
+  <div class="row">
+    <div class="large-6 columns divisor">
+      <h2>Financial Project<br/>Management System</h2>
+    </div>
+    <div class="large-6 columns">
+      <%= link_to 'Sign in with Software Evolutivo Google Apps Account', '#', { :id => 'btnSignIn',:class=>'button [radius round]' } %>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>This software es distribuided with license GLP v3</p>
+</footer>

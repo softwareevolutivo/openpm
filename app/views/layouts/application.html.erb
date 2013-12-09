@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Openpm</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-    <header style="background-color: gainsboro;">
-      <div align="center" style="padding: 20px; font-size: 3em;">
-        <span>Financial Proyect Management System</span>
-      </div>
-    </header>
-    <section id="errors">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </section>
-    <section style="min-height: 400px; border-bottom: solid; border-top: solid; margin-top: 20px; padding-left: 20px;">
-<%= yield %>
-    </section>
-    <footer>
-      <div align="right" style="font-style: oblique;">
-        <span>Copyleft Software Evolutivo</span>
-      </div>
-    </footer>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag "application" %>
+    <%= yield :head %>
+  </head>
+
+  <body>
+
+    <%= yield %>
+    <%= javascript_include_tag "foundation" %>
+  </body>
 </html>
