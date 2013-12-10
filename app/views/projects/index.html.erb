@@ -1,10 +1,14 @@
-<h1>Listing proyects</h1>
+<% content_for :breadcrumbs do %>
+    <li class="current"><a href="#">Projects</a></li>
+<% end %>
+
+<h1>Listing projects</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Customer</th>
       <th>Name</th>
+      <th>Customer</th>
       <th>Description</th>
       <th>State</th>
       <th>Start date</th>
@@ -16,16 +20,16 @@
   </thead>
 
   <tbody>
-    <% @proyects.each do |proyect| %>
+    <% @projects.each do |proyect| %>
       <tr>
-        <td><%= proyect.customer.name %></td>
         <td><%= proyect.name %></td>
+        <td><%= proyect.customer.name %></td>
         <td><%= proyect.description %></td>
         <td><%= proyect.state %></td>
         <td><%= proyect.start_date %></td>
         <td><%= proyect.end_date %></td>
         <td><%= link_to 'Show', proyect %></td>
-        <td><%= link_to 'Edit', edit_proyect_path(proyect) %></td>
+        <td><%= link_to 'Edit', edit_project_path(proyect) %></td>
         <td><%= link_to 'Destroy', proyect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -34,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Proyect', new_proyect_path %>
+<%= link_to 'New Proyect', new_project_path %>

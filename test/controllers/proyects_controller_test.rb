@@ -2,13 +2,13 @@ require 'test_helper'
 
 class ProyectsControllerTest < ActionController::TestCase
   setup do
-    @proyect = proyects(:one)
+    @project = proyects(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:proyects)
+    assert_not_nil assigns(:projects)
   end
 
   test "should get new" do
@@ -18,32 +18,32 @@ class ProyectsControllerTest < ActionController::TestCase
 
   test "should create proyect" do
     assert_difference('Proyect.count') do
-      post :create, proyect: { description: @proyect.description, end_date: @proyect.end_date, name: @proyect.name, start_date: @proyect.start_date, state: @proyect.state }
+      post :create, project: { description: @project.description, end_date: @project.end_date, name: @project.name, start_date: @project.start_date, state: @project.state }
     end
 
-    assert_redirected_to proyect_path(assigns(:proyect))
+    assert_redirected_to project_path(assigns(:project))
   end
 
   test "should show proyect" do
-    get :show, id: @proyect
+    get :show, id: @project
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @proyect
+    get :edit, id: @project
     assert_response :success
   end
 
   test "should update proyect" do
-    patch :update, id: @proyect, proyect: { description: @proyect.description, end_date: @proyect.end_date, name: @proyect.name, start_date: @proyect.start_date, state: @proyect.state }
-    assert_redirected_to proyect_path(assigns(:proyect))
+    patch :update, id: @project, project: { description: @project.description, end_date: @project.end_date, name: @project.name, start_date: @project.start_date, state: @project.state }
+    assert_redirected_to project_path(assigns(:project))
   end
 
   test "should destroy proyect" do
     assert_difference('Proyect.count', -1) do
-      delete :destroy, id: @proyect
+      delete :destroy, id: @project
     end
 
-    assert_redirected_to proyects_path
+    assert_redirected_to projects_path
   end
 end

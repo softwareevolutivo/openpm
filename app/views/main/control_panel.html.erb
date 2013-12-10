@@ -1,12 +1,54 @@
-<h1>Main#control_panel</h1>
-<p>Find me in app/views/main/control_panel.html.erb</p>
+<% content_for :head do %>
+    <script>
+        var redirected = false;
+        $(document).ready(function() {
+            $('#btnMaintenance').click(function (e) {
+                e.preventDefault();
+            });
+            $('#btnFinancial').click(function (e) {
+                e.preventDefault();
+            });
+            $('#btnReports').click(function (e) {
+                e.preventDefault();
+            });
+        });
 
-<% if user_signed_in? %>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    </li>
-<% else %>
-    <li>
-      <%= link_to('Login', new_user_session_path)  %>
-    </li>
+        function fillOptions(_id) {
+            var content = 'No options yet.';
+            if (_id == "btnMaintenance") {
+                content = '<ul class="side-nav">'
+                        + '  <li><a href="/customers">Customers</a></li>'
+                        + '  <li><a href="/projects">Projects</a></li>'
+                        + '  <li><a href="#">Workers</a></li>'
+                        + '</ul>';
+            }
+            $('#options').empty();
+            $('#options').append( content );
+        }
+    </script>
 <% end %>
+
+<section id="mainmenu">
+  <div class="row">
+    <div class="large-6 columns divisor">
+      <div class="row">
+        <div class="small-12 columns">
+          <a id="btnMaintenance" href="#" class="large button" onclick="fillOptions(this.id);" style="width: 300px;">Maintenance</a><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <a id="btnFinancial" href="#" class="large button" onclick="fillOptions(this.id);" style="width: 300px;">Financial</a><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <a id="btnReports" href="#" class="large button" onclick="fillOptions(this.id);" style="width: 300px;">Reports</a><br>
+        </div>
+      </div>
+    </div>
+    <div id="options" class="large-6 columns">
+      Please select a menu item in the left side.
+    </div>
+  </div>
+</section>

@@ -16,7 +16,33 @@
 
   <body>
 
+  <header>
+    <div class="row">
+      <div class="small-1 columns" style="margin-top: 20px;">
+        <%= image_tag 'yourlogohere.png' %>
+      </div>
+      <div class="small-10 columns" style="margin-top: 20px;">
+        <h3>Financial Project Management System - Control Panel</h3>
+      </div>
+      <div class="small-1 columns" style="margin-top: 30px; background-color: burlywood; font-weight: bold">
+        <% if user_signed_in? %>
+            <%= link_to('LOGOUT', destroy_user_session_path, :method => :delete) %>
+        <% else %>
+            <%= link_to('Login', new_user_session_path)  %>
+        <% end %>
+      </div>
+    </div>
+  </header>
+  <section id="breadcrumbs">
+    <ul class="breadcrumbs">
+      <li><a href="/main/control_panel">Home</a></li>
+      <%= yield :breadcrumbs %>
+    </ul>
+  </section>
+  <section id="operaciones">
     <%= yield %>
+  </section>
     <%= javascript_include_tag "foundation" %>
+  <footer></footer>
   </body>
 </html>

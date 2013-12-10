@@ -3,7 +3,7 @@ Openpm::Application.routes.draw do
   get "main/control_panel"
   get "user/root", to: "main#control_panel"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :proyects
+  resources :projects
 
   resources :customers
 
