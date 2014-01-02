@@ -48,3 +48,7 @@ end
 gem 'devise'
 gem 'omniauth-google-apps'
 gem 'foundation-rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+end

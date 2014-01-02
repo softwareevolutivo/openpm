@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209212203) do
+ActiveRecord::Schema.define(version: 20140102033327) do
 
   create_table "customers", force: true do |t|
     t.string   "nif"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20131209212203) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "customers", ["nif"], name: "index_customers_on_nif", unique: true
 
   create_table "projects", force: true do |t|
     t.string   "name"
