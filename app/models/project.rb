@@ -7,8 +7,8 @@ class Project < ActiveRecord::Base
   validates_associated :customer
   validates :hour_rate, presence: true, unless: :isByDelivery?
   validates :value, presence: true, if: :isByDelivery?
-  validates :hour_rate, :format => { with: /\A?(\d+\.\d{2})\z/ }, :allow_blank => true
-  validates :value, :format => { with: /\A?(\d+\.\d{2})\z/ }, :allow_blank => true
+  validates :hour_rate, :format => { with: /\A?\d+(\.\d{2})?\Z/ }, :allow_blank => true
+  validates :value, :format => { with: /\A?\d+(\.\d{2})?\Z/ }, :allow_blank => true
 
   def isByDelivery?
     logger.debug "work_mode => #{work_mode}"

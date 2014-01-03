@@ -60,6 +60,7 @@ class ProjectsController < ApplicationController
     end
     logger.debug "@project.value '#{@project.value}'"
     logger.debug "@project.hour_rate '#{@project.hour_rate}'"
+    logger.debug "proyect_params = #{proyect_params}"
 
     respond_to do |format|
       if @project.update(proyect_params)

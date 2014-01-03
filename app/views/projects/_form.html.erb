@@ -1,3 +1,20 @@
+<% content_for :head do %>
+    <script>
+      function renderFieldValue() {
+          //alert($('#fieldWorkMode').val());
+          var label = '<label for="project_hour_rate">Hour rate</label><br>';
+          var input = '<input id="project_hour_rate" name="project[hour_rate]" type="number" value="" />';
+          if ($('#fieldWorkMode').val() == 'by_delivery') {
+              label = '<label for="project_value">Value</label><br>';
+              input = '<input id="project_value" name="project[value]" type="number" value="" />';
+          }
+          $('#sectionValue').empty();
+          $('#sectionValue').append(label);
+          $('#sectionValue').append(input);
+      }
+    </script>
+<% end %>
+
 <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -30,26 +47,28 @@
   </div>
   <div class="field">
     <%= f.label :work_mode %><br>
-    <%= f.select :work_mode, options_for_select( %w(by_hours by_delivery), f.object.work_mode), include_blank: false %>
+    <%= f.select :work_mode, options_for_select( %w(by_hours by_delivery), f.object.work_mode), { include_blank: false} , { :onchange => 'renderFieldValue();', :id => 'fieldWorkMode' } %>
   </div>
   <% if f.object.work_mode == 'by_hours' %>
-    <div class="field">
+    <div class="field" id="sectionValue">
       <%= f.label :hour_rate %><br>
       <%= f.number_field :hour_rate %>
     </div>
   <% else %>
-    <div class="field">
+    <div class="field" id="sectionValue">
       <%= f.label :value %><br>
       <%= f.number_field :value %>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+  <div style="height: 210px;">
+    <div class="field" style="float: left; padding-right: 15px;">
+      <%= f.label :start_date %><br>
+      <%= f.date_select :start_date %>
+    </div>
+    <div class="field" style="float: left; padding-right: 15px;">
+      <%= f.label :end_date %><br>
+      <%= f.date_select :end_date %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
