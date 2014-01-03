@@ -1,19 +1,18 @@
-<% content_for :head do %>
-    <script>
-      function renderFieldValue() {
-          //alert($('#fieldWorkMode').val());
-          var label = '<label for="project_hour_rate">Hour rate</label><br>';
-          var input = '<input id="project_hour_rate" name="project[hour_rate]" type="number" value="" />';
-          if ($('#fieldWorkMode').val() == 'by_delivery') {
-              label = '<label for="project_value">Value</label><br>';
-              input = '<input id="project_value" name="project[value]" type="number" value="" />';
-          }
-          $('#sectionValue').empty();
-          $('#sectionValue').append(label);
-          $('#sectionValue').append(input);
-      }
-    </script>
-<% end %>
+<!--ugly but for that turbolinks don't relead de head is a momentanly solution - refactorme!!!-->
+<script>
+    function renderFieldValue() {
+        //alert($('#fieldWorkMode').val());
+        var label = '<label for="project_hour_rate">Hour rate</label><br>';
+        var input = '<input id="project_hour_rate" name="project[hour_rate]" type="number" value="" />';
+        if ($('#fieldWorkMode').val() == 'by_delivery') {
+            label = '<label for="project_value">Value</label><br>';
+            input = '<input id="project_value" name="project[value]" type="number" value="" />';
+        }
+        $('#sectionValue').empty();
+        $('#sectionValue').append(label);
+        $('#sectionValue').append(input);
+    }
+</script>
 
 <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
