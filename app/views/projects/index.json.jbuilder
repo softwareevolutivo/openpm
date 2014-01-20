@@ -1,4 +1,4 @@
-json.array!(@proyects) do |proyect|
-  json.extract! proyect, :name, :description, :state, :start_date, :end_date
-  json.url proyect_url(proyect, format: :json)
+json.array!(@projects) do |project|
+  json.extract! project, :name, :description, :state, :start_date, :end_date
+  json.url project_url(project, format: :json)
 end

@@ -1,6 +1,6 @@
-class CreateProyects < ActiveRecord::Migration
+class CreateProjects < ActiveRecord::Migration
   def change
-    create_table :proyects do |t|
+    create_table :projects do |t|
       t.string :name
       t.string :description
       t.string :state

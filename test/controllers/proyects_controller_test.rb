@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class ProyectsControllerTest < ActionController::TestCase
+class ProjectsControllerTest < ActionController::TestCase
   setup do
-    @project = proyects(:one)
+    @project = projects(:one)
   end
 
   test "should get index" do
@@ -16,15 +16,15 @@ class ProyectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create proyect" do
-    assert_difference('Proyect.count') do
+  test "should create project" do
+    assert_difference('Project.count') do
       post :create, project: { description: @project.description, end_date: @project.end_date, name: @project.name, start_date: @project.start_date, state: @project.state }
     end
 
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should show proyect" do
+  test "should show project" do
     get :show, id: @project
     assert_response :success
   end
@@ -34,13 +34,13 @@ class ProyectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update proyect" do
+  test "should update project" do
     patch :update, id: @project, project: { description: @project.description, end_date: @project.end_date, name: @project.name, start_date: @project.start_date, state: @project.state }
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should destroy proyect" do
-    assert_difference('Proyect.count', -1) do
+  test "should destroy project" do
+    assert_difference('Project.count', -1) do
       delete :destroy, id: @project
     end
 

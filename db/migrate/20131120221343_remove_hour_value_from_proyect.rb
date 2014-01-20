@@ -1,5 +1,5 @@
 class RemoveHourValueFromProyect < ActiveRecord::Migration
   def change
-    remove_column :proyects, :hour_value, :string
+    remove_column :projects, :hour_value, :string
   end
 end

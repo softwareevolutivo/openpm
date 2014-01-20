@@ -1,6 +1,6 @@
-class AddCustomerToProyect < ActiveRecord::Migration
+class AddCustomerToProject < ActiveRecord::Migration
   def change
-    add_column :proyects, :id_customer, :integer
-    add_index :proyects, :id_customer
+    add_column :projects, :id_customer, :integer
+    add_index :projects, :id_customer
   end
 end

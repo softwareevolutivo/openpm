@@ -1,5 +1,5 @@
 class AddValueToProyect < ActiveRecord::Migration
   def change
-    add_column :proyects, :value, :decimal
+    add_column :projects, :value, :decimal
   end
 end

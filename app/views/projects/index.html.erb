@@ -20,17 +20,17 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |proyect| %>
+    <% @projects.each do |project| %>
       <tr>
-        <td><%= proyect.name %></td>
-        <td><%= proyect.customer.name %></td>
-        <td><%= proyect.description %></td>
-        <td><%= proyect.state %></td>
-        <td><%= proyect.start_date %></td>
-        <td><%= proyect.end_date %></td>
-        <td><%= link_to 'Show', proyect %></td>
-        <td><%= link_to 'Edit', edit_project_path(proyect) %></td>
-        <td><%= link_to 'Destroy', proyect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= project.name %></td>
+        <td><%= project.customer.name %></td>
+        <td><%= project.description %></td>
+        <td><%= project.state %></td>
+        <td><%= project.start_date %></td>
+        <td><%= project.end_date %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Proyect', new_project_path %>
+<%= link_to 'New Project', new_project_path %>
