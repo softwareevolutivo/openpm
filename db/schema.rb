@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102033327) do
+ActiveRecord::Schema.define(version: 20140120021429) do
 
   create_table "customers", force: true do |t|
     t.string   "nif"
@@ -21,6 +21,27 @@ ActiveRecord::Schema.define(version: 20140102033327) do
   end
 
   add_index "customers", ["nif"], name: "index_customers_on_nif", unique: true
+
+  create_table "employees", force: true do |t|
+    t.string   "email",          null: false
+    t.string   "identification", null: false
+    t.string   "name",           null: false
+    t.string   "last_name",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_workers", force: true do |t|
+    t.string   "role"
+    t.decimal  "hour_rate",   precision: 5, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "employee_id"
+  end
+
+  add_index "project_workers", ["employee_id"], name: "index_project_workers_on_employee_id"
+  add_index "project_workers", ["project_id"], name: "index_project_workers_on_project_id"
 
   create_table "projects", force: true do |t|
     t.string   "name"
