@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120021429) do
+ActiveRecord::Schema.define(version: 20140121184133) do
 
   create_table "customers", force: true do |t|
     t.string   "nif"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 20140120021429) do
   end
 
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
+
+  create_table "time_sheets", force: true do |t|
+    t.date     "date",                                      null: false
+    t.time     "start_time",                                null: false
+    t.time     "end_time",                                  null: false
+    t.text     "work_description",                          null: false
+    t.text     "notes"
+    t.integer  "hours",                                     null: false
+    t.decimal  "hour_rate",         precision: 5, scale: 2, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_worker_id"
+  end
+
+  add_index "time_sheets", ["project_worker_id"], name: "index_time_sheets_on_project_worker_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

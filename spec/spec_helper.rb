@@ -39,4 +39,39 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before(:each) do
+    @customer_date = double(
+        nif: '9999999999999',
+        name: 'SE Test Company'
+    )
+    @project_data = double(
+        'book',
+        name: 'Project Name',
+        description: 'Project Description',
+        work_mode: 'by_delivery',
+        value: 4000.45
+    )
+    @employee_xp_data = double(
+        'employee_xp',
+        email: 'ximenapaz@softwareevolutivo.com.ec',
+        identification: '1715305566',
+        name: 'Ximena',
+        last_name: 'Paz'
+    )
+    @employee_fp_data = double(
+        'employee_fp',
+        email: 'fernandopaz@softwareevolutivo.com.ec',
+        identification: '1715300001',
+        name: 'Fernando',
+        last_name: 'Paz'
+    )
+    @employee_ja_data = double(
+        'employee_ja',
+        email: 'jorgeaguilar@softwareevolutivo.com.ec',
+        identification: '1715309900',
+        name: 'Jorge',
+        last_name: 'Aguilar'
+    )
+  end
 end

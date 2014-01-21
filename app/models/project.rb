@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :customer
+  has_many :project_workers
 
   validates :customer, :name, :description, :work_mode, presence: true;
   validates_inclusion_of :state, in: %w( proposal contract started finish )
