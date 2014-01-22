@@ -17,7 +17,7 @@ describe ProjectWorker do
         name: @employee_fp_data.name,
         last_name: @employee_fp_data.last_name)
     project_worker = ProjectWorker.create!(
-      role: 'seller',
+      role: @project_worker_data.role,
       project: project,
       employee: employee
     )

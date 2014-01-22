@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121184133) do
+ActiveRecord::Schema.define(version: 20140122170213) do
 
   create_table "customers", force: true do |t|
     t.string   "nif"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20140121184133) do
 
   add_index "customers", ["nif"], name: "index_customers_on_nif", unique: true
 
+  create_table "distributions", force: true do |t|
+    t.string   "concept",                                   null: false
+    t.decimal  "amount",            precision: 5, scale: 2, null: false
+    t.string   "status",                                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "payment_id"
+    t.integer  "project_worker_id"
+  end
+
+  add_index "distributions", ["payment_id"], name: "index_distributions_on_payment_id"
+  add_index "distributions", ["project_worker_id"], name: "index_distributions_on_project_worker_id"
+
   create_table "employees", force: true do |t|
     t.string   "email",          null: false
     t.string   "identification", null: false
@@ -30,6 +43,22 @@ ActiveRecord::Schema.define(version: 20140121184133) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "payments", force: true do |t|
+    t.date     "expiration_date",                              null: false
+    t.date     "cancellation_date"
+    t.string   "invoice_number"
+    t.decimal  "amount",               precision: 5, scale: 2, null: false
+    t.decimal  "distributable_amount", precision: 5, scale: 2, null: false
+    t.string   "status",                                       null: false
+    t.string   "origin",                                       null: false
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+  end
+
+  add_index "payments", ["project_id"], name: "index_payments_on_project_id"
 
   create_table "project_workers", force: true do |t|
     t.string   "role"
@@ -69,9 +98,11 @@ ActiveRecord::Schema.define(version: 20140121184133) do
     t.decimal  "hour_rate",         precision: 5, scale: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "employee_id"
     t.integer  "project_worker_id"
   end
 
+  add_index "time_sheets", ["employee_id"], name: "index_time_sheets_on_employee_id"
   add_index "time_sheets", ["project_worker_id"], name: "index_time_sheets_on_project_worker_id"
 
   create_table "users", force: true do |t|

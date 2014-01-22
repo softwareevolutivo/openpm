@@ -73,5 +73,23 @@ RSpec.configure do |config|
         name: 'Jorge',
         last_name: 'Aguilar'
     )
+    @project_worker_data = double(
+        'project_worker',
+        role: 'seller'
+    )
+    @time_sheet = double(
+        date: '02/01/2014'.to_date,
+        start_time: '08:00'.to_time,
+        end_time: '17:30'.to_time,
+        work_description: 'TimeSheet design\nTimesheet TDD\n SSO conect with users',
+        hours: 8.555
+    )
+    @payment_data =  double(
+        'parment 1',
+        expiration_date: '15/01/2014'.to_date,
+        amount: 4895.22,
+        origin: 'manual',
+        notes: 'Notes of payments'
+    )
   end
 end
