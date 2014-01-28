@@ -98,11 +98,9 @@ ActiveRecord::Schema.define(version: 20140122170213) do
     t.decimal  "hour_rate",         precision: 5, scale: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "employee_id"
     t.integer  "project_worker_id"
   end
 
-  add_index "time_sheets", ["employee_id"], name: "index_time_sheets_on_employee_id"
   add_index "time_sheets", ["project_worker_id"], name: "index_time_sheets_on_project_worker_id"
 
   create_table "users", force: true do |t|
