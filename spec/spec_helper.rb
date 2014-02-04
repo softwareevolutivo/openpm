@@ -91,9 +91,5 @@ RSpec.configure do |config|
         origin: 'manual',
         notes: 'Notes of payments'
     )
-    @distribution_data = double(
-        concept: 'capitalization',
-        amount: 501.22,
-    )
   end
 end
